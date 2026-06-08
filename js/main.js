@@ -1,15 +1,14 @@
-// Feedback visual al enviar el formulario del modal
-document.getElementById('btnEnviar').addEventListener('click', function () {
+const btnEnviar = document.getElementById('btnEnviar');
+const modalContacto = document.getElementById('modalContacto');
+
+btnEnviar.addEventListener('click', () => {
   const nombre = document.getElementById('nombre').value.trim();
 
-  if (nombre === '') {
+  if (!nombre) {
     alert('Por favor ingresa tu nombre.');
     return;
   }
 
-  // Cerrar el modal usando la API de Bootstrap
-  const modal = bootstrap.Modal.getInstance(document.getElementById('modalContacto'));
-  modal.hide();
-
-  alert('Mensaje enviado. Gracias, ' + nombre + '!');
+  bootstrap.Modal.getInstance(modalContacto)?.hide();
+  alert(`Mensaje enviado. Gracias, ${nombre}!`);
 });
